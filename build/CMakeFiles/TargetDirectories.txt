@@ -1,0 +1,12 @@
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/sram_gpio.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/sram_read.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/sram_write.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/pin_config.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/uart.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/sram_hexdump.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/sram_healthcheck.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/sram_injector.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/debug.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/hex.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/edit_cache.dir
+/home/arcueid/Desktop/6502_beta/build/CMakeFiles/rebuild_cache.dir
