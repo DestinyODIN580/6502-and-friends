@@ -14,9 +14,8 @@ the Arduino
 
 the programs can be flashed via the `flash.sh` script.
 
-The AVR programs are to be found in the `avr_bin` folder
-
-The Arduino equivalents are placed in the `arduino_bin` folder
+The AVR programs are to be found in the `avr_bin` folder, and their Arduino
+equivalents are in the `arduino_bin` folder
 
 ---
 
