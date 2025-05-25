@@ -1,5 +1,5 @@
 # 6502 and friends
-Welcome! This project contains some utilities to monitor a **WC65c02s** and to
+Welcome! This project contains some utilities to monitor a **W65C02S** and to
 control a static RAM (**HM62256LP-70**) using two **Arduino**, one listening to what
 the 6502 is saying and the other one programming and monitoring the RAM. 
 
@@ -21,7 +21,7 @@ equivalents are in the `arduino_bin` folder
 
 **Datasheets**
 
-[WC65c02s](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf)
+[W65C02S](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf)
 
 [HM62256LP-70](https://www.jameco.com/Jameco/Products/ProdDS/82472.pdf)
 
