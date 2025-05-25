@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libsram_read.a CMakeFiles/sram_read.dir/lib/sram_read/sram_read.c.obj
-/usr/bin/avr-ranlib libsram_read.a

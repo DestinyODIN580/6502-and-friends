@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libpin_config.a CMakeFiles/pin_config.dir/config/pin_bus.c.obj
-/usr/bin/avr-ranlib libpin_config.a

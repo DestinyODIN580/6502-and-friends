@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libsram_gpio.a CMakeFiles/sram_gpio.dir/lib/sram_gpio/sram_gpio.c.obj
-/usr/bin/avr-ranlib libsram_gpio.a

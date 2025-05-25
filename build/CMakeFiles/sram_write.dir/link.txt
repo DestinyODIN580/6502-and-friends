@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libsram_write.a CMakeFiles/sram_write.dir/lib/sram_write/sram_write.c.obj
-/usr/bin/avr-ranlib libsram_write.a

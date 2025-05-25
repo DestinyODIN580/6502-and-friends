@@ -1,1 +1,0 @@
-/usr/bin/avr-gcc -mmcu=atmega2560 -Wl,--gc-sections CMakeFiles/sram_healthcheck.dir/apps/sram_healthcheck/main.c.obj -o sram_healthcheck  libsram_gpio.a libsram_read.a libsram_write.a libpin_config.a libuart.a libsram_gpio.a
