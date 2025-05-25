@@ -4,7 +4,7 @@ project(sram_project C)
 # ————— settings —————
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/avr-toolchain.cmake)
 
-set(FLASH_DIR "${CMAKE_SOURCE_DIR}/arduino_bin")
+set(FLASH_DIR "${CMAKE_SOURCE_DIR}/avr_bin")
 file(MAKE_DIRECTORY "${FLASH_DIR}")
 
 # ————— libraries —————
