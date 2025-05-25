@@ -1,2 +1,4 @@
 arduino_bin/*
+!arduino_bin/.gitkeep
 build/*
+!build/.gitkeep
