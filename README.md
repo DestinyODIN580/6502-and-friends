@@ -14,6 +14,8 @@ the Arduino
 
 the programs can be flashed via the `flash.sh` script.
 
+An arduino script equivalent (`.ino` file) is provided.
+
 ---
 
 **Datasheets**
