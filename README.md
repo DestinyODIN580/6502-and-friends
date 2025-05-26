@@ -18,6 +18,13 @@ The AVR programs are to be found in the `avr_bin` folder, and their Arduino
 equivalents are in the `arduino_bin` folder
 
 ---
+## Instructions
+- navigate to `build/` directory
+- `cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/avr-toolchain.cmake ..`
+- `make`
+- go back to root directory and flash your programs with `./flash.sh <program_name>`!
+
+---
 
 **Datasheets**
 
