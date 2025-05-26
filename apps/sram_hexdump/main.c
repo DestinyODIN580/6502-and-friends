@@ -2,12 +2,13 @@
 #include <util/delay.h>
 #include <string.h>
 #include <stdio.h>
-#include "../../config/pin_bus.h"
+#include <pin_bus.h>
 #include "../../lib/uart/uart.h"
 #include "../../lib/sram_gpio/sram_gpio.h"
 #include "../../lib/sram_read/sram_read.h"
 #include "../../lib/sram_write/sram_write.h"
 
+/*
 uint8_t program[][16] = {
     0xa9, 0xff, 0x8d, 0x02, 0x60, 0xa9, 0xe0, 0x8d, 0x03, 0x60, 0xa9, 0x38, 0x8d, 0x00, 0x60, 0xa9,
     0x00, 0x8d, 0x01, 0x60, 0xa9, 0x80, 0x8d, 0x01, 0x60, 0xa9, 0x00, 0x8d, 0x01, 0x60, 0xa9, 0x0e,
@@ -33,7 +34,7 @@ uint8_t program[][16] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   };
   
-
+*/
 void setup_pins ();
 void inject_program ();
 void sram_fetch ();
@@ -84,7 +85,7 @@ void inject_program ()
     uint16_t addr = 0;
     int i, j;
 
-    for (i = j = addr = 0; addr < sizeof (program); addr++, j++)
+    for (i = j = addr = 0; addr < get_program_size (); addr++, j++)
     {
         if (j == 0x10)
         {
@@ -100,7 +101,7 @@ void inject_program ()
 
     UART_putString ("complete...integity check...");
 
-    for (addr = i = j = 0; addr < sizeof (program); addr++, i++)
+    for (addr = i = j = 0; addr < get_program_size (); addr++, i++)
     {   
         if (i == 0x10)
         {
@@ -121,7 +122,7 @@ void sram_fetch ()
     UART_putString ("\nhexdump ");
 
     char buf[30];
-    snprintf (buf, sizeof (buf), "program size: %d bytes\n", sizeof (program));
+    snprintf (buf, sizeof (buf), "program size: %d bytes\n", get_program_size ());
     UART_putString (buf);
 
     char header[] = "\nAddress: 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\n";
@@ -130,7 +131,7 @@ void sram_fetch ()
     uint16_t addr = 0;
     int i, j;
 
-    for (addr = 0; addr < sizeof (program);)
+    for (addr = 0; addr < get_program_size ();)
     {
         sprintf (buf, "%07x: ", addr);
         UART_putString (buf);

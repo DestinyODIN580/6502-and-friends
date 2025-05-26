@@ -18,7 +18,7 @@ target_link_libraries(sram_write PUBLIC sram_gpio uart)
 
 add_library(6502_ctrl STATIC 6502_ctrl/6502_ctrl.c)
 target_include_directories(6502_ctrl PUBLIC 6502_ctrl)
-target_link_libraries(6502_ctrl PUBLIC sram_gpio)  
+target_link_libraries(6502_ctrl PUBLIC sram_gpio uart)  
 
 add_library(sram_ctrl STATIC sram_ctrl/sram_ctrl.c)
 target_include_directories(sram_ctrl PUBLIC sram_ctrl)        

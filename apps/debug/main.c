@@ -11,6 +11,7 @@
 #include <sram_read.h>
 #include <sram_write.h>
 
+/*
 uint8_t program[][16] = {
     0xa9, 0xff, 0x8d, 0x02, 0x60, 0xa9, 0xe0, 0x8d, 0x03, 0x60, 0xa9, 0x38, 0x8d, 0x00, 0x60, 0xa9,
     0x00, 0x8d, 0x01, 0x60, 0xa9, 0x80, 0x8d, 0x01, 0x60, 0xa9, 0x00, 0x8d, 0x01, 0x60, 0xa9, 0x0e,
@@ -35,10 +36,10 @@ uint8_t program[][16] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
   };
-  
+  */
 
 void setup_pins ();
-void inject_program ();
+//void inject_program ();
 void sram_fetch ();
 void end_pins ();
 
@@ -54,13 +55,14 @@ int main ()
 
     _delay_ms (1000);
     
-    inject_program ();
+    //inject_program ();
 
-    _delay_ms (1000);
+    //_delay_ms (1000);
     
     sram_fetch ();
 
     deactivate_sram ();
+    //deactivate_6502() ;
 }
 
 void setup_pins ()
@@ -90,7 +92,7 @@ void end_pins ()
     for (int i = 0; i < 8; i++)
         avr_pin_mode (DATA_PINS[i], INPUT);
 }
-
+/*
 void inject_program ()
 { 
     UART_putString ("Injecting program...");
@@ -128,13 +130,13 @@ void inject_program ()
     }
     UART_putString ("success.");
 } 
-
+ */
 void sram_fetch ()
 {
     UART_putString ("\nhexdump ");
 
     char buf[30];
-    snprintf (buf, sizeof (buf), "program size: %d bytes\n", sizeof (program));
+    snprintf (buf, sizeof (buf), "program size: %d bytes\n", get_program_size());
     UART_putString (buf);
 
     char header[] = "\nAddress: 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\n";
@@ -143,7 +145,7 @@ void sram_fetch ()
     uint16_t addr = 0;
     int i, j;
 
-    for (addr = 0; addr < sizeof (program);)
+    for (addr = 0; addr < get_program_size();)
     {
         sprintf (buf, "%07x: ", addr);
         UART_putString (buf);

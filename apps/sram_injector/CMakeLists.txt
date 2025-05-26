@@ -5,6 +5,9 @@ target_link_libraries(sram_injector
     sram_write
     sram_gpio
     pin_config
+    uart
+    6502_ctrl
+    sram_ctrl
 )
 
 add_custom_command(TARGET sram_injector POST_BUILD

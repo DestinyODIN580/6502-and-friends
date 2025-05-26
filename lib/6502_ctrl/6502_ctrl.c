@@ -3,6 +3,7 @@
 #include <6502_ctrl.h>
 #include <pin_bus.h>
 #include <sram_gpio.h>
+#include <uart.h>
 
 enum PROC_STATE g_6502_active = PROC_UNDEFINED;
 
@@ -28,11 +29,13 @@ inline void _6502_set_undefined ()
 
 void init_6502 ()
 {
+    /*
     if (is_6502_active() != PROC_UNDEFINED)
     {
         // debug print
         return ;
     }
+    */
 
     // 6502 started tri-stated with reset held.
     avr_pin_mode (BE_PIN, OUTPUT);
@@ -49,7 +52,9 @@ void deactivate_6502 ()
     if (is_6502_active() != PROC_ACTIVE)
     {
         // debug print
-        return ;
+
+        // probably best to initialize it to high z
+        init_6502();
     }
 
     avr_digital_write (BE_PIN, LOW);
@@ -74,7 +79,7 @@ void activate_6502 ()
     _6502_set_active ();
 }
 
-void destroy_6502_pins ()
+void destroy_6502 ()
 {
     avr_pin_mode (BE_PIN, INPUT);
     avr_pin_mode (RESET_PIN, INPUT);
