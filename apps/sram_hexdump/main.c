@@ -45,7 +45,7 @@ void sram_hexdump ()
     UART_putString (header);
 
     uint16_t addr = 0;
-    int i, j;
+    int i;
 
     for (addr = 0; addr < get_program_size ();)
     {
