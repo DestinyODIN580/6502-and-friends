@@ -3,6 +3,7 @@
 
 #include <pin_bus.h>
 #include <uart.h>
+#include <sram_gpio.h>
 #include <sram_read.h>
 #include <sram_write.h>
 #include <6502_ctrl.h>
@@ -18,10 +19,15 @@ int main ()
     init_6502 ();
     deactivate_6502();
 
+    _delay_ms (1000);
     activate_sram ();
-    inject_program ();
-    deactivate_sram ();    
 
+    _delay_ms (1000);
+    inject_program ();
+    _delay_ms (1000);
+
+    deactivate_sram ();    
+    _delay_ms (1000);
     // correct, but now commented to avoid damages
     // activate_6502 ();
 
