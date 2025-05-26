@@ -94,6 +94,7 @@ void inject_program ()
         data_write (addr, program[i][j]);
     }
 
+//  reset vector at location fffc (lb) fffd (hb)
 //  data_write (0x7ffc, 0x00);
 //  data_write (0x7ffd, 0x80);
 

@@ -4,7 +4,7 @@ PORT="/dev/ttyACM0"
 BAUD="115200"
 MCU="atmega2560"
 PROGRAMMER="wiring"
-HEXDIR="arduino_bin"
+HEXDIR="avr_bin"
 
 if [ $# -ne 1 ]; then
   echo "Use: $0 <filename>/<filename.hex>"

@@ -2,13 +2,12 @@
 #include <util/delay.h>
 #include <stdio.h>
 
-#include "sram_read.h"
-#include "../sram_gpio/sram_gpio.h"
-#include "../config/pin_bus.h"
-#include "../uart/uart.h"
+#include <sram_read.h>
+#include <sram_gpio.h>
+#include <pin_bus.h>
+#include <uart.h>
 
-enum Mode { WRITE,
-  READ };
+enum Mode { WRITE, READ };
 
 uint8_t data_read (uint16_t address)
 {

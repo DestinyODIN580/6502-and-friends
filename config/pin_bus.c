@@ -1,10 +1,10 @@
 #include "pin_bus.h"
+#include <stdint.h>
 
 const uint8_t DATA_PINS[NUM_DATA_PINS] =
 {
        22, 24, 26, 28, 30, 32, 34, 36
 };
-
 
 const uint8_t ADDR_PINS[NUM_ADDR_PINS] =
 {
