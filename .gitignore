@@ -4,3 +4,8 @@ avr_bin/*
 !avr_bin/.gitkeep
 build/*
 !build/.gitkeep
+compile_commands.json
+.nvim/*
+.cache/*
+latex/*
+Doxyfile

@@ -2,49 +2,46 @@
 #include <util/delay.h>
 #include <stdio.h>
 
-#include <sram_read.h>
-#include <sram_gpio.h>
-#include <pin_bus.h>
-#include <uart.h>
-
-enum Mode { WRITE, READ };
-
+#include "sram_read.h" 
+#include "sram_gpio.h"
+#include "pin_bus.h"
+#include "uart.h" 
+ 
 uint8_t data_read (uint16_t address)
 {
     uint8_t data = 0x0;
-  
+
     for (int i = 0; i < 8; i++)
         avr_pin_mode (DATA_PINS[i], INPUT);
     _delay_us (1);
-  
+
     for (int i = 0; i < 15; i++)
         avr_digital_write (ADDR_PINS[i], (address >> i) & 0x1);
-  
+
     avr_digital_write (CS_PIN, LOW);
     _delay_us (1);
-  
+
     avr_digital_write (OE_PIN, LOW);
     _delay_us (1);
-  
+
     for (int i = 0; i < 8; i++)
-      data |= (avr_digital_read (DATA_PINS[i]) << i);
-  
+        data |= (avr_digital_read (DATA_PINS[i]) << i);
+
     avr_digital_write (CS_PIN, HIGH);
     _delay_us (1);
-  
+    
     avr_digital_write (OE_PIN, HIGH);
     _delay_us (1);
 
-  
     /*
     if (DEBUG_READ || DEBUG_READ_PRINT)
         avr_digital_write (address, data, READ);
-  */
-  
+    */
+
     return data;
 }
-
-
+ 
+/*
 void _debug_print (unsigned int address, uint8_t data, enum Mode mode)
 {
     char buffer[20];
@@ -79,7 +76,6 @@ void _debug_print (unsigned int address, uint8_t data, enum Mode mode)
   }
 
 
-/*
 void _debug_print(unsigned int address, uint8_t data, Mode mode) {
   if (mode == WRITE)
     Serial.print("w");

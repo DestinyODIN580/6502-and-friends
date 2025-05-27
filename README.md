@@ -20,9 +20,15 @@ equivalents are in the `arduino_bin` folder
 ---
 ## Instructions
 - navigate to `build/` directory
-- `cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/avr-toolchain.cmake ..`
+- `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_TOOLCHAIN_FILE=../cmake/avr-toolchain.cmake ..`
 - `make`
 - go back to root directory and flash your programs with `./flash.sh <program_name>`!
+
+---
+
+## Documentation (Work in progress)
+- Doxygen
+- Available at `./html/index.html`
 
 ---
 

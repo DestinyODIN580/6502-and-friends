@@ -3,12 +3,19 @@
 
 #include "sram_gpio.h"
 
+ /**
+ * @brief Structure to represent a GPIO pin and its control registers.
+ *
+ * Each pin is associated with its DDR (data direction register), PORT
+ * (output register), PIN (input register), and bit index.
+ */
 typedef struct {
-    volatile uint8_t* ddr;
-    volatile uint8_t* port;
-    volatile uint8_t* pin;
-    uint8_t bit;
+    volatile uint8_t* ddr;   /**< Pointer to DDR register. */
+    volatile uint8_t* port;  /**< Pointer to PORT register. */
+    volatile uint8_t* pin;   /**< Pointer to PIN register. */
+    uint8_t bit;             /**< Bit position in the register. */
 } pinmap_t;
+
 
 const pinmap_t pin_map[] =
 {
@@ -68,9 +75,14 @@ const pinmap_t pin_map[] =
     { &DDRB, &PORTB, &PINB, 0 }   // D53
 };
 
+/**
+ * @brief Returns the total number of defined digital pins.
+ *
+ * @return Number of entries in the pin map array.
+ */
 static inline uint8_t _pin_count (void)
 {
-    return sizeof (pin_map) / sizeof(pinmap_t);
+    return sizeof(pin_map) / sizeof(pinmap_t);
 }
 
 void avr_pin_mode (uint8_t pin, uint8_t mode)

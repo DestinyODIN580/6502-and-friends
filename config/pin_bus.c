@@ -1,25 +1,35 @@
 #include <pin_bus.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 
+/** (digital) pins used for the data bus (D0-D7). */
 const uint8_t DATA_PINS[NUM_DATA_PINS] =
 {
        22, 24, 26, 28, 30, 32, 34, 36
 };
 
+/** (digital) Pins used for the address bus (A0-A14). */
 const uint8_t ADDR_PINS[NUM_ADDR_PINS] =
 {
        23, 25, 27, 29, 31, 33, 35, 37,
        39, 41, 43, 45, 47, 49, 51
 };
 
-const uint8_t WE_PIN    = 2;
-const uint8_t OE_PIN    = 3;
-const uint8_t CS_PIN    = 4;
-const uint8_t RESET_PIN = 5;
-const uint8_t BE_PIN    = 6;
+const uint8_t WE_PIN    = 2; /** SRAM control pin: Write Enable (active low). */
+const uint8_t OE_PIN    = 3; /** SRAM control pin: Output Enable (active low). */
+const uint8_t CS_PIN    = 4; /** SRAM control pin: Chip Select (active low). */
+
+const uint8_t RESET_PIN = 5; /** 6502 pin: Reset (active low). */
+const uint8_t BE_PIN    = 6; /** 6502 pin: Bus Enable (active low). */
+
+/* control pins TBD */
 const uint8_t SEND_PIN  = 7;
 
+/* Program to be injected
+ *
+ * TODO: maybe add a script that sends more programs via serial communication?
+ */
 const uint8_t program[][16] = 
 {
        0xa9, 0xff, 0x8d, 0x02, 0x60, 0xa9, 0xe0, 0x8d, 0x03, 0x60, 0xa9, 0x38, 0x8d, 0x00, 0x60, 0xa9,

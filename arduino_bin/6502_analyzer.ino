@@ -55,9 +55,9 @@ const char* opcodeTable[256] =
 enum AddressingMode { NONE, IMM, ZP, ABS };
 typedef struct instr_t
 {
-  const char* mnemonic;
-  uint8_t size;
-  AddressingMode mode;
+    const char* mnemonic;
+    uint8_t size;
+    AddressingMode mode;
 } instr_t;
 instr_t instr_info[256];
 
