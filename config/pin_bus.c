@@ -29,8 +29,9 @@ const uint8_t SEND_PIN  = 7;
 /* Program to be injected
  *
  * TODO: maybe add a script that sends more programs via serial communication?
+ * NOTE: changed to not const because now it can be edited via UART
  */
-const uint8_t program[][16] = 
+uint8_t program[][16] = 
 {
        0xa9, 0xff, 0x8d, 0x02, 0x60, 0xa9, 0xe0, 0x8d, 0x03, 0x60, 0xa9, 0x38, 0x8d, 0x00, 0x60, 0xa9,
        0x00, 0x8d, 0x01, 0x60, 0xa9, 0x80, 0x8d, 0x01, 0x60, 0xa9, 0x00, 0x8d, 0x01, 0x60, 0xa9, 0x0e,
@@ -59,4 +60,9 @@ const uint8_t program[][16] =
 inline size_t get_program_size ()
 {
        return sizeof (program);
+}
+
+inline size_t get_program_rows ()
+{
+       return get_program_size () / 16;
 }

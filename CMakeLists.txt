@@ -28,6 +28,10 @@ add_library(sram_ctrl lib/sram_ctrl/sram_ctrl.c)
 target_include_directories(sram_ctrl PUBLIC lib/sram_ctrl)        
 target_link_libraries(sram_ctrl PUBLIC 6502_ctrl)    
 
+add_library(sram_ops STATIC lib/sram_ops/sram_ops.c)
+target_include_directories(sram_ops PUBLIC lib/sram_ops)        
+target_link_libraries(sram_ops PUBLIC sram_read sram_write pin_config uart)
+
 add_library(pin_config config/pin_bus.c)
 target_include_directories(pin_config PUBLIC config)
 
@@ -42,7 +46,7 @@ add_executable(debug             apps/debug/main.c)
 
 
 foreach(tgt IN ITEMS sram_hexdump sram_healthcheck sram_injector debug)
-  target_link_libraries(${tgt} PRIVATE sram_gpio sram_read sram_write pin_config uart 6502_ctrl sram_ctrl)
+  target_link_libraries(${tgt} PRIVATE sram_gpio sram_read sram_write pin_config uart 6502_ctrl sram_ctrl sram_ops)
 endforeach()
 
 add_custom_target(hex ALL
@@ -54,5 +58,5 @@ add_custom_target(hex ALL
           $<TARGET_FILE:sram_injector>     ${FLASH_DIR}/sram_injector.hex
   COMMAND ${CMAKE_OBJCOPY} -O ihex -R .eeprom
           $<TARGET_FILE:debug> ${FLASH_DIR}/debug.hex
-  DEPENDS sram_hexdump sram_healthcheck sram_injector debug
+  DEPENDS sram_hexdump sram_healthcheck sram_injector debug sram_ops uart
 )

@@ -37,7 +37,7 @@ extern const uint8_t ADDR_PINS[NUM_ADDR_PINS];
 #define RESETVECTOR_LB  0x00
 
 /** Preloaded program to be written to SRAM. */
-extern const uint8_t program[][16];
+extern uint8_t program[][16];
 
 /** SRAM control pins. */
 extern const uint8_t WE_PIN;
@@ -57,5 +57,12 @@ extern const uint8_t SEND_PIN;
  * @return Size of the program (in bytes).
  */
 size_t get_program_size ();
+
+/**
+ * @brief Get how many rows the program is composed of.
+ *
+ * @return #rows (count starts from 1).
+ */
+size_t get_program_rows ();
 
 /** @} */
