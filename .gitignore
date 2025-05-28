@@ -8,4 +8,5 @@ compile_commands.json
 .nvim/*
 .cache/*
 latex/*
+html/*
 Doxyfile
