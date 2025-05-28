@@ -63,20 +63,21 @@ void setup() {
   res_t res;
   uint16_t base_address = 0x0;
   uint16_t range_address = TEST_RANGE;
-    parse_result(check_blank(base_address, range_address));
-
+  
+  parse_result(check_blank(base_address, range_address));  
   /*
   parse_result(check_detached(base_address, range_address));
   parse_result(check_sequential(base_address, range_address));
   parse_result(check_blank(base_address, range_address));
   parse_result(check_shift_bit());
 
+  
   Serial.println ("starting complete check (detached)...");
   parse_result(check_complete_detached());
   Serial.println ("starting complete check (sequential)...");
   parse_result(check_complete_sequential());
   Serial.println ("done!");
-  */
+ */ 
   inject_program ();
   sram_fetch ();
 

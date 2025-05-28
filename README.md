@@ -3,6 +3,8 @@ Welcome! This project contains some utilities to monitor a **W65C02S** and to
 control a static RAM (**HM62256LP-70**) using two **Arduino**, one listening to what
 the 6502 is saying and the other one programming and monitoring the RAM. 
 
+![Screenshot](/images/glue_logic_attempt/first_working_attempt.jpeg)
+
 ---
 
 The project is shipped with some programs, ready to be flashed to

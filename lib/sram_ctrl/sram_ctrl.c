@@ -69,7 +69,11 @@ void deactivate_sram ()
         // debug print
         return ;
     }
-
+/*
+    avr_digital_write (WE_PIN, HIGH);
+    avr_digital_write (OE_PIN, HIGH);
+    avr_digital_write (CS_PIN, HIGH);
+*/
     for (int i = 0; i < 15; i++)
         avr_pin_mode (ADDR_PINS[i], INPUT);
     for (int i = 0; i < 8; i++)
