@@ -3,9 +3,9 @@ var indexSectionsWithContent =
   0: "6abcdfghilnoprsw",
   1: "p",
   2: "ps",
-  3: "adg",
+  3: "adgs",
   4: "abcdoprsw",
-  5: "cdps",
+  5: "cdops",
   6: "6af"
 };
 

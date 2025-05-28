@@ -131,6 +131,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1756a1cd1e576ec13d84e2832cd49140" id="r_ga1756a1cd1e576ec13d84e2832cd49140"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1756a1cd1e576ec13d84e2832cd49140">get_program_size</a> ()</td></tr>
 <tr class="memdesc:ga1756a1cd1e576ec13d84e2832cd49140"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get total size of the program in bytes.  <br /></td></tr>
 <tr class="separator:ga1756a1cd1e576ec13d84e2832cd49140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadaf16ef5194ab12d1802432c28d8b6c6" id="r_gadaf16ef5194ab12d1802432c28d8b6c6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gadaf16ef5194ab12d1802432c28d8b6c6">get_program_rows</a> ()</td></tr>
+<tr class="memdesc:gadaf16ef5194ab12d1802432c28d8b6c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get how many rows the program is composed of.  <br /></td></tr>
+<tr class="separator:gadaf16ef5194ab12d1802432c28d8b6c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -138,8 +141,8 @@ Variables</h2></td></tr>
 <tr class="separator:gabf705c3ec5d145b747c9d36e0fd47b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga532984aa94d1d0791902894df8e6460b" id="r_ga532984aa94d1d0791902894df8e6460b"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga532984aa94d1d0791902894df8e6460b">ADDR_PINS</a> [<a class="el" href="#gaaf5fc027dceca19384941931cf55100f">NUM_ADDR_PINS</a>]</td></tr>
 <tr class="separator:ga532984aa94d1d0791902894df8e6460b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga234985f99e277d3b2a4ce961eac1cd06" id="r_ga234985f99e277d3b2a4ce961eac1cd06"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga234985f99e277d3b2a4ce961eac1cd06">program</a> [][16]</td></tr>
-<tr class="separator:ga234985f99e277d3b2a4ce961eac1cd06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga648331e67575c4eda0b46095eeed59dd" id="r_ga648331e67575c4eda0b46095eeed59dd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga648331e67575c4eda0b46095eeed59dd">program</a> [][16]</td></tr>
+<tr class="separator:ga648331e67575c4eda0b46095eeed59dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4c0172f70eccec4bd07f66187271d99f" id="r_ga4c0172f70eccec4bd07f66187271d99f"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4c0172f70eccec4bd07f66187271d99f">WE_PIN</a></td></tr>
 <tr class="separator:ga4c0172f70eccec4bd07f66187271d99f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga536c6ec1eab0b2cf45d39ac1e86ae548" id="r_ga536c6ec1eab0b2cf45d39ac1e86ae548"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga536c6ec1eab0b2cf45d39ac1e86ae548">OE_PIN</a></td></tr>
@@ -232,6 +235,34 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gadaf16ef5194ab12d1802432c28d8b6c6" name="gadaf16ef5194ab12d1802432c28d8b6c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadaf16ef5194ab12d1802432c28d8b6c6">&#9670;&#160;</a></span>get_program_rows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_program_rows </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get how many rows the program is composed of. </p>
+<dl class="section return"><dt>Returns</dt><dd>#rows (count starts from 1). </dd></dl>
+
+</div>
+</div>
 <a id="ga1756a1cd1e576ec13d84e2832cd49140" name="ga1756a1cd1e576ec13d84e2832cd49140"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1756a1cd1e576ec13d84e2832cd49140">&#9670;&#160;</a></span>get_program_size()</h2>
 
@@ -376,8 +407,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ga234985f99e277d3b2a4ce961eac1cd06" name="ga234985f99e277d3b2a4ce961eac1cd06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga234985f99e277d3b2a4ce961eac1cd06">&#9670;&#160;</a></span>program</h2>
+<a id="ga648331e67575c4eda0b46095eeed59dd" name="ga648331e67575c4eda0b46095eeed59dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga648331e67575c4eda0b46095eeed59dd">&#9670;&#160;</a></span>program</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -386,7 +417,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const uint8_t program[][16]</td>
+          <td class="memname">uint8_t program[][16]</td>
         </tr>
       </table>
   </td>

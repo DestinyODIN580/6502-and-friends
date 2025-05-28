@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['get_5fprogram_5fsize_0',['get_program_size',['../pin__bus_8c.html#af48779035887d260a8b58b3365a11416',1,'get_program_size(size_t size, char *string):&#160;pin_bus.c'],['../group__project__config.html#ga1756a1cd1e576ec13d84e2832cd49140',1,'get_program_size():&#160;pin_bus.h']]]
+  ['sram_5fedit_5fbyte_0',['sram_edit_byte',['../group__SRAM__Operations.html#ga23c24c14238f0456217e834762d59379',1,'sram_edit_byte():&#160;sram_ops.c'],['../group__SRAM__Operations.html#ga23c24c14238f0456217e834762d59379',1,'sram_edit_byte():&#160;sram_ops.c']]],
+  ['sram_5fedit_5fline_1',['sram_edit_line',['../group__SRAM__Operations.html#gac5d6303fdd902d966a7048694720f395',1,'sram_edit_line():&#160;sram_ops.c'],['../group__SRAM__Operations.html#gac5d6303fdd902d966a7048694720f395',1,'sram_edit_line():&#160;sram_ops.c']]],
+  ['sram_5fhexdump_2',['sram_hexdump',['../group__SRAM__Operations.html#ga8a0f0bb1dd1d88feb51a7c4b52f4f134',1,'sram_hexdump():&#160;main.c'],['../group__SRAM__Operations.html#ga8a0f0bb1dd1d88feb51a7c4b52f4f134',1,'sram_hexdump():&#160;sram_ops.c'],['../group__SRAM__Operations.html#ga8a0f0bb1dd1d88feb51a7c4b52f4f134',1,'sram_hexdump():&#160;main.c']]],
+  ['sram_5finject_3',['sram_inject',['../group__SRAM__Operations.html#gac7102ab930cab2aeac3f2cd9ff03d66e',1,'sram_inject():&#160;sram_ops.c'],['../group__SRAM__Operations.html#gac7102ab930cab2aeac3f2cd9ff03d66e',1,'sram_inject():&#160;sram_ops.c']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sram_20driver_0',['SRAM Driver',['../group__sram__driver.html',1,'']]]
+  ['pin_20configuration_0',['Project pin configuration',['../group__project__config.html',1,'']]],
+  ['project_20pin_20configuration_1',['Project pin configuration',['../group__project__config.html',1,'']]]
 ];
