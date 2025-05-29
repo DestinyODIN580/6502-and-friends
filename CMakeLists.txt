@@ -22,7 +22,7 @@ target_link_libraries(sram_write PRIVATE sram_gpio)
 
 add_library(6502_ctrl lib/6502_ctrl/6502_ctrl.c)
 target_include_directories(6502_ctrl PUBLIC lib/6502_ctrl)
-target_link_libraries(6502_ctrl PUBLIC sram_gpio uart)  
+target_link_libraries(6502_ctrl PUBLIC sram_gpio uart clock_ctrl)  
 
 add_library(sram_ctrl lib/sram_ctrl/sram_ctrl.c)
 target_include_directories(sram_ctrl PUBLIC lib/sram_ctrl)        
@@ -31,6 +31,10 @@ target_link_libraries(sram_ctrl PUBLIC 6502_ctrl)
 add_library(sram_ops STATIC lib/sram_ops/sram_ops.c)
 target_include_directories(sram_ops PUBLIC lib/sram_ops)        
 target_link_libraries(sram_ops PUBLIC sram_read sram_write pin_config uart)
+
+add_library(clock_ctrl STATIC lib/clock_ctrl/clock_ctrl.c)
+target_include_directories(clock_ctrl PUBLIC lib/clock_ctrl)        
+target_link_libraries(clock_ctrl PUBLIC sram_gpio pin_config)
 
 add_library(pin_config config/pin_bus.c)
 target_include_directories(pin_config PUBLIC config)
@@ -46,7 +50,7 @@ add_executable(debug             apps/debug/main.c)
 
 
 foreach(tgt IN ITEMS sram_hexdump sram_healthcheck sram_injector debug)
-  target_link_libraries(${tgt} PRIVATE sram_gpio sram_read sram_write pin_config uart 6502_ctrl sram_ctrl sram_ops)
+  target_link_libraries(${tgt} PRIVATE sram_gpio sram_read sram_write pin_config uart 6502_ctrl sram_ctrl sram_ops clock_ctrl)
 endforeach()
 
 add_custom_target(hex ALL
@@ -58,5 +62,5 @@ add_custom_target(hex ALL
           $<TARGET_FILE:sram_injector>     ${FLASH_DIR}/sram_injector.hex
   COMMAND ${CMAKE_OBJCOPY} -O ihex -R .eeprom
           $<TARGET_FILE:debug> ${FLASH_DIR}/debug.hex
-  DEPENDS sram_hexdump sram_healthcheck sram_injector debug sram_ops uart
+  DEPENDS sram_hexdump sram_healthcheck sram_injector debug sram_ops uart clock_ctrl
 )

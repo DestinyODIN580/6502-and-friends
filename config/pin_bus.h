@@ -47,6 +47,7 @@ extern const uint8_t CS_PIN;
 /** 6502 control pins. */
 extern const uint8_t RESET_PIN;
 extern const uint8_t BE_PIN;
+extern const uint8_t CLK_PIN;
 
 /** Send control signal pin. */
 extern const uint8_t SEND_PIN;

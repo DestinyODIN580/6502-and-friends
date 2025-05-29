@@ -22,6 +22,7 @@ const uint8_t CS_PIN    = 4; /** SRAM control pin: Chip Select (active low). */
 
 const uint8_t RESET_PIN = 5; /** 6502 pin: Reset (active low). */
 const uint8_t BE_PIN    = 6; /** 6502 pin: Bus Enable (active low). */
+const uint8_t CLK_PIN   = 11;/** 6502 pin: Clock signal */
 
 /* control pins TBD */
 const uint8_t SEND_PIN  = 7;

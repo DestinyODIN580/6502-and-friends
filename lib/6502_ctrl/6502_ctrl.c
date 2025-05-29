@@ -4,6 +4,7 @@
 #include <pin_bus.h>
 #include <sram_gpio.h>
 #include <uart.h>
+#include <clock_ctrl.h>
 
 enum PROC_STATE g_6502_active = PROC_UNDEFINED;
 
@@ -29,6 +30,7 @@ inline void _6502_set_undefined ()
 
 void init_6502 ()
 {
+    clock_stop () ;
     /*
     if (is_6502_active() != PROC_UNDEFINED)
     {
@@ -59,6 +61,7 @@ void deactivate_6502 ()
 
     avr_digital_write (BE_PIN, LOW);
     avr_digital_write (RESET_PIN, LOW);
+    clock_stop(); 
 
     _delay_ms (10);
     _6502_set_deactive ();
@@ -72,6 +75,7 @@ void activate_6502 ()
         return ;
     }
 
+    clock_start(); 
     avr_digital_write(BE_PIN, HIGH);
     _delay_ms (2);
     avr_digital_write (RESET_PIN, HIGH);
@@ -81,6 +85,7 @@ void activate_6502 ()
 
 void destroy_6502 ()
 {
+    clock_stop();
     avr_pin_mode (BE_PIN, INPUT);
     avr_pin_mode (RESET_PIN, INPUT);
 
