@@ -52,8 +52,8 @@ void sram_inject ()
     }
 
 //  reset vector at location fffc (lb) fffd (hb)
-//  data_write (0x7ffc, 0x00);
-//  data_write (0x7ffd, 0x80);
+    data_write (0x7ffc, 0x00);
+    data_write (0x7ffd, 0x80);
 
     UART_putString ("complete...integity check...");
 

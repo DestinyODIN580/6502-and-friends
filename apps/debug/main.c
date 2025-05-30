@@ -14,11 +14,14 @@
 #include <sram_ops.h>
 #include <clock_ctrl.h>
 
-#define DEBUG_START_FREQUENCY 1 // Hz
+#define DEBUG_START_FREQUENCY 100 // Hz
 
 void init_sequence ();
 void closing_sequence ();
 void processor_call ();
+void processor_stop ();
+void processor_freeze ();
+void processor_unfreeze ();
 void menu_print ();
 
 int main ()
@@ -55,6 +58,16 @@ int main ()
                 break;
             case '5':
                 processor_call ();
+                break;
+            case '6':
+                processor_stop ();
+                break;
+            case '7':
+                processor_freeze ();
+                break;
+            case '8':
+                processor_unfreeze ();
+                break;
             case '\n':
                 continue;
             default:
@@ -96,7 +109,34 @@ void processor_call ()
     UART_putString ("----------------------------------------\n");
 }
 
+void processor_stop ()
+{
+    deactivate_6502();
+    activate_sram ();
+    UART_putString ("\n\nProcessor deactivated\n");
+    UART_putString ("----------------------------------------\n");
+}
+
+void processor_freeze ()
+{
+    freeze_6502 ();
+    activate_sram ();
+    UART_putString ("\n\nProcessor frozen\n");
+    UART_putString ("----------------------------------------\n");
+}
+
+void processor_unfreeze ()
+{
+    deactivate_sram ();
+    unfreeze_6502 ();
+    UART_putString ("\n\nProcessor unfrozen\n");
+    UART_putString ("----------------------------------------\n");
+}
+
 inline void menu_print ()
 {
-    UART_putString ("Choose between:\n0. exit\n1. sram_inject\n2. sram_hexdump\n3. sram_edit_byte\n4. sram_edit_line\n5. 6502 (you better know what you are doing)\n----------------------------------------\n");
+    UART_putString ("Choose between:\n0. exit\n1. sram_inject\n2. sram_hexdump\n3. sram_edit_byte\n4. sram_edit_line\n");
+    UART_putString ("5. 6502  activate (you better know what you are doing)\n6. 6502 deactivate (breathe now)\n");
+    UART_putString ("7. 6502  freeze (you better know what you are doing)\n8. 6502 unfreeze (you better know what you are doing)");
+    UART_putString ("\n----------------------------------------\n");
 }
