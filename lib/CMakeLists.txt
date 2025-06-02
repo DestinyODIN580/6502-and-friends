@@ -30,4 +30,4 @@ target_link_libraries(sram_ops PUBLIC sram_read sram_write pin_config uart)
 
 add_library(clock_ctrl STATIC clock_ctrl/clock_ctrl.c)
 target_include_directories(clock_ctrl PUBLIC clock_ctrl)        
-target_link_libraries(clock_ctrl PUBLIC sram_gpio pin_config)
+target_link_libraries(clock_ctrl PUBLIC sram_gpio pin_config 6502_ctrl sram_ctrl)

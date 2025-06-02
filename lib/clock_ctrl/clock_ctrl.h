@@ -56,3 +56,12 @@ void clock_stop (void);
  * @param freq_hz New desired frequency in Hz.
  */
 void clock_set_frequency (uint32_t freq_hz);
+
+/**
+ * @brief Advance the clock for 1 cycle
+ *
+ * Stops the clock and "artificially" creates a clock impulse.
+ * Multiple calls can be chained together to create a single-step
+ * clock.
+ */
+void clock_tick ();

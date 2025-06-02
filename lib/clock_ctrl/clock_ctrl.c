@@ -3,8 +3,13 @@
 #include "clock_ctrl.h"
 #include "pin_bus.h"       
 #include "sram_gpio.h"
+#include <6502_ctrl.h>
+#include <sram_ctrl.h>
+#include <util/delay.h>
+#include <uart.h>
 
 #define TIMER_CS_MASK  ((1<<CS12) | (1<<CS11) | (1<<CS10))
+#define OC1A_TOGGLE   (1<<COM1A0)
 
 static uint8_t _prescaler_bits (uint16_t presc)
 {
@@ -23,6 +28,11 @@ static uint8_t _prescaler_bits (uint16_t presc)
         default:
             return 0;        
     }
+}
+
+static inline uint8_t _timer_active(void)
+{
+    return (TCCR1B & TIMER_CS_MASK);      
 }
 
 void clock_init (uint32_t freq_hz)
@@ -90,4 +100,36 @@ void clock_set_frequency (uint32_t freq_hz)
         }
     }
 }
- 
+
+void clock_tick(void)
+{
+    if (is_6502_active() != PROC_ACTIVE)
+    { 
+        UART_putString ("[Clock] 6502 not active - tick aborted.\n");
+        return;
+    }
+    if (is_sram_active() == SRAM_ACTIVE)
+    { 
+        UART_putString ("[Clock] SRAM active - tick aborted.\n");
+        return;
+    }
+
+    // prev. setup
+    uint8_t timer_was_on   = _timer_active ();
+    uint8_t com1a_was_set  = TCCR1A & OC1A_TOGGLE;
+
+    TCCR1B &= ~TIMER_CS_MASK;   // stop prescaler            
+    TCCR1A &= ~OC1A_TOGGLE;     // OC1A back to normal I/O   
+
+    avr_pin_mode (CLK_PIN, OUTPUT);
+    avr_digital_write (CLK_PIN, HIGH);
+    _delay_us (2);              
+    avr_digital_write (CLK_PIN, LOW);
+    _delay_us (2);
+
+    // restore previous timer state if it was active 
+    if (com1a_was_set)
+        TCCR1A |= OC1A_TOGGLE;
+    if (timer_was_on)
+        TCCR1B |= timer_was_on; 
+}

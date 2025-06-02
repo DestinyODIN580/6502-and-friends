@@ -9,6 +9,8 @@ void _6502_set_deactive ();
 void _6502_set_undefined ();
 void _6502_set_frozen ();
 
+void get_6502_state (char *);
+
 void init_6502 ();
 void activate_6502 ();
 void freeze_6502 ();

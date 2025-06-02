@@ -7,5 +7,7 @@ enum SRAM_STATE is_sram_active ();
 void _sram_set_active ();
 void _sram_set_deactive();
 
+void get_sram_state (char *);
+
 void activate_sram ();
 void deactivate_sram ();

@@ -1,3 +1,5 @@
+#include <stdio.h>
+//#include <stdlib.h>
 #include <util/delay.h>
 
 #include <6502_ctrl.h>
@@ -51,14 +53,14 @@ void deactivate_6502 ()
 {
     if (is_6502_active () == PROC_FROZEN)
     {
-        UART_putString ("CPU already frozen, skip deactivate\n");
+        UART_putString ("deactivate_6502 (): CPU already frozen, skip deactivate\n");
         return;
     }
 
 
     if (is_6502_active () != PROC_ACTIVE)
     {
-        UART_putString ("deactivate_6502(): CPU inactive\n");
+        UART_putString ("deactivate_6502(): CPU already inactive/uknown state\n");
         return;                          
     }
 
@@ -90,7 +92,7 @@ void unfreeze_6502 (void)
     if (is_6502_active() != PROC_FROZEN)
         return;
 
-    clock_start();
+    // clock_start ();  TODO: decide it in selection screen
 
     avr_digital_write (BE_PIN, HIGH);     
 
@@ -106,7 +108,7 @@ void activate_6502 ()
         return ;
     }
 
-    clock_start (); 
+    // clock_start ();  TODO: decide it in selection screen
     avr_digital_write (BE_PIN, HIGH);
     _delay_ms (2);
     avr_digital_write (RESET_PIN, HIGH);
@@ -121,4 +123,28 @@ void destroy_6502 ()
     avr_pin_mode (RESET_PIN, INPUT);
 
     _6502_set_undefined ();
+}
+
+void get_6502_state (char *buffer)
+{    
+    char state[20];
+    switch (is_6502_active ())
+    {
+        case PROC_UNDEFINED:
+            strcpy (state, "PROC_UNDEFINED");
+            break;   
+        case PROC_ACTIVE:
+            strcpy (state, "PROC_ACTIVE");
+            break;
+        case PROC_INACTIVE:
+            strcpy (state, "PROC_INACTIVE");
+            break;
+        case PROC_FROZEN:
+            strcpy (state, "PROC_FROZEN");
+            break;
+        default:
+            strcpy (state, "???");
+            break;
+    }
+    snprintf (buffer, 50, "6502 state --> %s (%d)\n", state, is_6502_active ());
 }

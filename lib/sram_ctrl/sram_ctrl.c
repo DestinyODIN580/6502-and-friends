@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include <sram_ctrl.h>
 #include <6502_ctrl.h>
 #include <sram_gpio.h>
@@ -30,7 +32,7 @@ void init_sram ()
 {
     if (is_6502_active () != PROC_INACTIVE)
     {
-        UART_putString ("init_sram: processor is not inactive, going high z");
+        UART_putString ("init_sram (): processor is not inactive, going high z (arduino)\n");
         for (int i = 0; i < 15; i++)
             avr_pin_mode (ADDR_PINS[i], INPUT);
         for (int i = 0; i < 8; i++)
@@ -62,13 +64,13 @@ void activate_sram ()
 {   
     if (is_sram_active () == SRAM_ACTIVE)
     {
-        UART_putString ("activate_sram (): SRAM already active, doing nothing");
+        UART_putString ("activate_sram (): SRAM already active, doing nothing\n");
         return ;
     } 
 
     if (is_6502_active () == PROC_ACTIVE)
     {
-        UART_putString ("activate_sram (): CPU still running, cannot enable SRAM\n");
+        UART_putString ("activate_sram (): CPU is active, cannot enable SRAM\n");
         return;
     }
 
@@ -106,7 +108,7 @@ void deactivate_sram ()
 {
     if (is_sram_active () != SRAM_ACTIVE)
     {
-        UART_putString ("deactivate_sram (): SRAM is not active, doing nothing");
+        UART_putString ("deactivate_sram (): SRAM is not active, doing nothing\n");
         return ;
     }
 /*
@@ -126,4 +128,25 @@ void deactivate_sram ()
     //avr_digital_write (WE_PIN,; HIGH);
 
     _sram_set_deactive ();
+}
+
+void get_sram_state (char *buffer)
+{
+    char state[20];
+    switch (is_sram_active())
+    {
+        case SRAM_UNDEFINED:
+            strcpy (state, "SRAM_UNDEFINED");
+            break;   
+        case SRAM_ACTIVE:
+            strcpy (state, "SRAM_ACTIVE");
+            break;
+        case SRAM_INACTIVE:
+            strcpy (state, "SRAM_INACTIVE");
+            break;
+        default:
+            strcpy (state, "???");
+            break;
+    }
+    snprintf (buffer, 50, "SRAM state --> %s (%d)\n", state, is_sram_active());
 }
