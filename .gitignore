@@ -7,6 +7,6 @@ build/*
 compile_commands.json
 .nvim/*
 .cache/*
-latex/*
-html/*
+latex/
+html/
 Doxyfile
