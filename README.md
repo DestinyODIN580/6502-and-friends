@@ -30,7 +30,7 @@ He can only listen to the 6502 ports, and give a feedback on what's going on ove
 lines. On each clock pulse, it will read on all those ports (plus the rwb) and format the results in a nice,
 readable way, acting pretty much like a logic analyzer.
 
---
+---
 ## Content overview
 
 The most relevant functions are provided as stand-alone programs, so that
