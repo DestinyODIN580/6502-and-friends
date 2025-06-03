@@ -13,17 +13,17 @@ enum SRAM_STATE is_sram_active ()
     return g_sram_active;
 }
 
-void _sram_set_active ()
+inline void _sram_set_active ()
 {
     g_sram_active = SRAM_ACTIVE;
 }
 
-void _sram_set_deactive ()
+inline void _sram_set_deactive ()
 {   
     g_sram_active = SRAM_INACTIVE;
 }
 
-void _sram_set_undefined ()
+inline void _sram_set_undefined ()
 {
     g_sram_active = SRAM_UNDEFINED;
 }

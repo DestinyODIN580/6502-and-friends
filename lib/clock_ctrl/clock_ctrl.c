@@ -101,7 +101,7 @@ void clock_set_frequency (uint32_t freq_hz)
     }
 }
 
-void clock_tick(void)
+void clock_tick (void)
 {
     if (is_6502_active() != PROC_ACTIVE)
     { 
